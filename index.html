@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timed Typing Test App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="masthead">
+        <h1>Test Your Typing Speed</h1>
+    </header>
+
+    <main class="main">
+
+        <article class="intro">
+            <p>Duplicate the text below EXACTLY. The timer starts when you begin typing and stops only when you match it perfectly. Good luck!</p>
+        </article>
+
+        <section class="test-area">
+
+            <!-- Origin text — JS renders each character as a <span> -->
+            <div id="origin-text">
+                <p id="origin-p"></p>
+            </div>
+
+            <div class="test-wrapper">
+                <textarea id="test-area" rows="5" placeholder="The clock starts when you start typing."></textarea>
+            </div>
+
+            <!-- Timer, live stats, reset button -->
+            <div class="meta">
+                <div class="timer" id="timer">00:00:00</div>
+
+                <div class="live-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">WPM</span>
+                        <span class="stat-value" id="wpm-display">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Errors</span>
+                        <span class="stat-value" id="error-display">0</span>
+                    </div>
+                    <div class="stat-box ghost-box">
+                        <span class="stat-label">👻 Ghost</span>
+                        <span class="stat-value ghost-val" id="ghost-label">60 WPM</span>
+                    </div>
+                </div>
+
+                <button id="reset">Start over</button>
+            </div>
+
+            <!-- Virtual keyboard -->
+            <div id="keyboard" class="keyboard"></div>
+
+        </section>
+
+        <!-- Live WPM chart -->
+        <section class="chart-section">
+            <h2 class="section-title">📈 Live WPM</h2>
+            <div class="chart-box">
+                <canvas id="wpm-chart" height="120"></canvas>
+                <p class="chart-hint" id="chart-hint">Chart updates as you type…</p>
+            </div>
+        </section>
+
+        <!-- Top 3 leaderboard + bar chart -->
+        <section class="leaderboard-section">
+            <h2 class="section-title">🏆 Top 3 Scores</h2>
+            <div id="scores-list"></div>
+            <div class="chart-box">
+                <canvas id="scores-chart" height="150"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
